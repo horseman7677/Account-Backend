@@ -1,6 +1,7 @@
 package com.horseman.backend_xyz.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -30,21 +31,24 @@ public class Controller {
         return service.getAllData();
     }
 
+    @GetMapping("byId/{id}")
+    public Optional<DataModel> getById(@PathVariable Integer id) {
+        return service.getById(id);
+    }
+
     @PostMapping("add")
     public String addData(@RequestBody DataModel data) {
         return service.addData(data);
     }
 
     @PutMapping("update")
-    public String update(@RequestBody DataModel data)
-    {
+    public String update(@RequestBody DataModel data) {
         // System.out.println(data.getId());
-        return service.update(data.getId(),data.getInvoiceAmount());
+        return service.update(data.getId(), data.getInvoiceAmount());
     }
 
     @DeleteMapping("delete/{id}")
-    public String remove(@PathVariable Integer id)
-    {
+    public String remove(@PathVariable Integer id) {
         return service.removeAccount(id);
     }
 }

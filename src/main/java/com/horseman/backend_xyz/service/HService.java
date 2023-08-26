@@ -1,6 +1,8 @@
 package com.horseman.backend_xyz.service;
 
 import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.horseman.backend_xyz.dao.Dao;
@@ -14,6 +16,10 @@ public class HService {
 
     public List<DataModel> getAllData() {
         return dao.findAll();
+    }
+
+    public Optional<DataModel> getById(Integer id) {
+        return dao.findById(id);
     }
 
     public String addData(DataModel data) {
